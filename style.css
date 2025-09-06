@@ -104,4 +104,23 @@ input,select,textarea{font-size:16px} /* evita zoom en iOS */
 
 .synaptia img{height:24px;width:auto;display:block}
 @media (max-width:600px){.synaptia img{height:20px}}
+/* Banda de marca grande */
+.synaptia-band{
+  border-top:1px solid rgba(255,255,255,.06);
+  padding: clamp(1.2rem, 3vw, 2.4rem) 0;
+  background: linear-gradient(180deg, rgba(255,255,255,.02), transparent 60%);
+}
+.synaptia-band picture{display:block}
+.synaptia-band img{
+  display:block;
+  margin: 0 auto;
+  height: clamp(72px, 12vw, 180px); /* grande pero fluido */
+  width: auto;                      /* no deforma */
+  filter: drop-shadow(0 6px 18px rgba(0,0,0,.25));
+}
+@media (max-width:480px){
+  .synaptia-band img{height: clamp(64px, 18vw, 140px)}
+}
+
+
 

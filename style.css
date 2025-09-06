@@ -111,3 +111,6 @@ input,select,textarea{font-size:16px} /* evita zoom en iOS */
 @media (max-width:600px){
   .synaptia img{ height:20px }
 }
+
+.synaptia img{height:24px;width:auto;display:block}
+@media (max-width:600px){.synaptia img{height:20px}}

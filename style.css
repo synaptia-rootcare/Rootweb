@@ -164,28 +164,6 @@ input,select,textarea{font-size:16px} /* evita zoom en iOS */
 
 
 
-/* Shorts más pequeños */
-.demo-grid{
-  display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 300px)); /* máx ~300px por short */
-  justify-content: center;
-  gap:.8rem;
-}
-.demo-card{
-  padding:0;                /* mantiene estilo de card */
-  max-width:300px;
-  margin:0 auto;
-}
-.demo-media.ar-9x16{ aspect-ratio:9/16 }             /* se mantiene vertical */
-.demo-media iframe{ position:absolute; inset:0; width:100%; height:100% }
-
-@media (max-width:920px){
-  .demo-grid{ grid-template-columns:1fr }            /* apilados en móvil/tablet */
-  .demo-card{ max-width:320px }
-}
-
-
-
 
 
 

@@ -1,0 +1,102 @@
+/* ===== Base responsive sólida ===== */
+:root{
+  --bg:#0b0f1a; --card:#101728; --muted:#94a3b8; --text:#e6edf6;
+  --brand:#6ee7b7; --brand-2:#60a5fa; --ring:rgba(110,231,183,.35)
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:radial-gradient(1200px 600px at 80% -10%,rgba(96,165,250,.12),transparent 60%),radial-gradient(1000px 600px at -10% 10%,rgba(110,231,183,.10),transparent 60%),var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial;-webkit-text-size-adjust:100%}
+img,video{max-width:100%;height:auto;display:block;border-radius:12px}
+a{color:inherit;text-decoration:none}
+.container{width:min(1200px,92%);margin-inline:auto}
+
+/* Botones y chips con área táctil */
+.btn,.chip{min-height:44px}
+
+/* Navegación móvil */
+.nav-links{display:flex;gap:1rem;align-items:center}
+.nav-toggle{display:none;background:#121a2f;border:1px solid #1f2942;border-radius:10px;padding:.45rem .6rem;color:var(--text)}
+@media (max-width:920px){
+  .nav{gap:.6rem}
+  .nav-toggle{display:inline-flex}
+  .nav-links{display:none;flex-direction:column;align-items:flex-start;gap:.6rem;
+             position:absolute;right:1rem;top:60px;background:#0f172a;border:1px solid #1e2a46;
+             padding:.8rem;border-radius:12px;z-index:20}
+  .nav-links.open{display:flex}
+}
+
+/* Animación reveal accesible */
+.reveal{opacity:0;transform:translateY(10px)}
+.reveal.in{opacity:1;transform:translateY(0);transition:opacity .5s ease, transform .5s ease}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .reveal,.reveal.in{opacity:1;transform:none}
+}
+
+/* ===== Grillas y secciones ===== */
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem}
+.team{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem}
+.tile{aspect-ratio:16/10;border:1px solid #1e2a46;border-radius:12px;display:grid;place-items:center;background:#0f172a;color:#99f6e4}
+
+/* Breakpoints progresivos */
+@media (max-width:1024px){
+  .team{grid-template-columns:repeat(3,1fr)}
+}
+@media (max-width:920px){
+  .cards{grid-template-columns:1fr}
+  .two-col{grid-template-columns:1fr}
+  .gallery{grid-template-columns:1fr 1fr}
+  .kpis{grid-template-columns:1fr 1fr 1fr}
+}
+@media (max-width:768px){
+  .team{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:600px){
+  section{padding:1.5rem 0}
+  .kpis{grid-template-columns:1fr 1fr}
+}
+@media (max-width:480px){
+  .gallery{grid-template-columns:1fr}
+  .kpis{grid-template-columns:1fr}
+  .ecosistema-grid{grid-template-columns:1fr}
+}
+
+/* Fallback si el navegador no soporta aspect-ratio */
+@supports not (aspect-ratio: 16/10){
+  .tile,.eco-tile{position:relative;height:0;padding-top:62.5%}
+  .tile > *, .eco-tile > *{position:absolute;inset:0}
+}
+
+/* ===== Ecosystem: click para mostrar descripción (sin hover) ===== */
+.ecosistema-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem}
+.eco-tile{
+  position:relative;cursor:pointer;overflow:hidden;
+  aspect-ratio:16/10;border:1px solid #1e2a46;border-radius:12px;background:#0f172a;
+  background-size:cover;background-position:center;background-repeat:no-repeat;
+}
+.eco-desc{
+  position:absolute;inset:0;display:none;z-index:2;
+  padding:16px;text-align:center;background:#0f172a;color:var(--text);
+  border:1px solid #1e2a46;align-items:center;justify-content:center;flex-direction:column;
+  gap:.4rem;line-height:1.35
+}
+.eco-desc h4{margin:.2rem 0 .4rem;font-size:1.1rem}
+.eco-desc .list{list-style:disc;padding-left:1.1rem;text-align:left;color:var(--muted)}
+
+/* Modo descripción fijo al hacer clic */
+.eco-tile[data-state="desc"] .eco-desc{display:flex!important}
+.eco-tile[data-state="desc"]{background-image:none!important}
+/* Anula cualquier hover previo */
+#eco-pop{display:none!important}
+.eco-tile:hover::before,.eco-tile:hover::after{content:none!important;display:none!important}
+.eco-tile[data-state="desc"]:hover .eco-desc{display:flex!important}
+
+/* ===== Multimedia embebido ===== */
+.hero-card iframe{display:block;width:100%;height:100%}
+video{width:100%;height:auto}
+
+/* ===== Accesibilidad táctil ===== */
+a,button{touch-action:manipulation}
+input,select,textarea{font-size:16px} /* evita zoom en iOS */

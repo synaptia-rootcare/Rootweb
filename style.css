@@ -162,6 +162,31 @@ input,select,textarea{font-size:16px} /* evita zoom en iOS */
 /* responsive */
 @media (max-width:920px){ .demo-grid{grid-template-columns:1fr} }
 
+/* Ecosystem: click shows text, hides image */
+.eco-tile{
+  position:relative; cursor:pointer; overflow:hidden;
+  aspect-ratio:16/10; border:1px solid #1e2a46; border-radius:12px;
+  background-size:cover; background-position:center; background-repeat:no-repeat;
+}
+.eco-desc{
+  position:absolute; inset:0; display:none; z-index:2;
+  padding:16px; background:#0f172a; color:var(--text);
+  border:1px solid #1e2a46; align-items:center; justify-content:center;
+  text-align:center; gap:.4rem;
+}
+.eco-desc h4{margin:.2rem 0 .3rem; font-size:1.05rem}
+.eco-desc p{margin:0; color:var(--muted)}
+
+/* Show description when state=desc */
+.eco-tile[data-state="desc"] .eco-desc{display:flex!important}
+.eco-tile[data-state="desc"]{background-image:none!important}
+.eco-tile[data-state="desc"] picture,
+.eco-tile[data-state="desc"] img{display:none!important}
+
+/* Kill old hover popups/effects */
+#eco-pop{display:none!important}
+.eco-tile:hover::before,.eco-tile:hover::after{content:none!important;display:none!important}
+
 
 
 

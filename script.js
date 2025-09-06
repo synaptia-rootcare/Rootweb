@@ -41,3 +41,31 @@ document.querySelectorAll('.eco-tile').forEach(tile=>{
   tile.addEventListener('click',toggle);
   tile.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle();}});
 });
+// Ecosystem tiles: click toggles image <-> description
+document.getElementById('eco-pop')?.remove();
+
+document.querySelectorAll('.eco-tile').forEach(tile=>{
+  tile.tabIndex = 0;
+
+  // Create overlay if missing
+  let overlay = tile.querySelector('.eco-desc');
+  if(!overlay){
+    overlay = document.createElement('div');
+    overlay.className = 'eco-desc';
+    const h = document.createElement('h4'); h.textContent = tile.dataset.title || '';
+    const p = document.createElement('p');  p.textContent = tile.dataset.desc  || '';
+    overlay.append(h,p);
+    tile.append(overlay);
+  }
+
+  // Initial state
+  tile.dataset.state = tile.dataset.state || 'img';
+
+  // Toggle handlers
+  const toggle = ()=>{ tile.dataset.state = tile.dataset.state === 'img' ? 'desc' : 'img'; };
+  tile.addEventListener('click', toggle);
+  tile.addEventListener('keydown', e=>{
+    if(e.key==='Enter' || e.key===' '){ e.preventDefault(); toggle(); }
+  });
+});
+

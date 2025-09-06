@@ -110,17 +110,7 @@ input,select,textarea{font-size:16px} /* evita zoom en iOS */
   padding: clamp(1.2rem, 3vw, 2.4rem) 0;
   background: linear-gradient(180deg, rgba(255,255,255,.02), transparent 60%);
 }
-.synaptia-band picture{display:block}
-.synaptia-band img{
-  display:block;
-  margin: 0 auto;
-  height: clamp(72px, 12vw, 180px); /* grande pero fluido */
-  width: auto;                      /* no deforma */
-  filter: drop-shadow(0 6px 18px rgba(0,0,0,.25));
-}
-@media (max-width:480px){
-  .synaptia-band img{height: clamp(60px, 18vw, 120px)}
-}
+
 /* SynaptIA: mitad de altura */
 .synaptia-band img{
   height: clamp(36px, 6vw, 90px); /* antes: 72px,12vw,180px */
@@ -131,6 +121,7 @@ input,select,textarea{font-size:16px} /* evita zoom en iOS */
     height: clamp(32px, 9vw, 70px); /* antes: 64px,18vw,140px */
   }
 }
+
 
 
 
